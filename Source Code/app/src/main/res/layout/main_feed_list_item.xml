@@ -42,10 +42,10 @@
             app:layout_constraintStart_toEndOf="@id/avatar_container"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/textView_description"/>
+            app:layout_constraintBottom_toTopOf="@id/textView_capital"/>
 
     <TextView
-            android:id="@+id/textView_description"
+            android:id="@+id/textView_capital"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAlignment="center"
@@ -55,10 +55,23 @@
             app:layout_constraintStart_toEndOf="@id/avatar_container"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_name"
-            app:layout_constraintBottom_toTopOf="@id/textView_owner"/>
+            app:layout_constraintBottom_toTopOf="@id/textView_population"/>
 
     <TextView
-            android:id="@+id/textView_owner"
+            android:id="@+id/textView_population"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="@dimen/list_item_text_size_main"
+            android:layout_marginStart="@dimen/list_item_internal_spacing"
+            android:layout_marginTop="@dimen/list_item_internal_spacing"
+            app:layout_constraintStart_toEndOf="@id/avatar_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_capital"
+            app:layout_constraintBottom_toTopOf="@id/textView_latlng"/>
+
+    <TextView
+            android:id="@+id/textView_latlng"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAlignment="viewEnd"
@@ -67,7 +80,7 @@
             android:layout_marginTop="@dimen/list_item_internal_spacing"
             app:layout_constraintStart_toEndOf="@id/avatar_container"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_description"
+            app:layout_constraintTop_toBottomOf="@id/textView_population"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

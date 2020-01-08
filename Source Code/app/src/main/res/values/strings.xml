@@ -6,6 +6,10 @@
     <string name="network_problem_check_internet_connection">Network problem. Check Internet connection please.</string>
     <string name="try_again">Try again</string>
     <string name="refresh">Refresh</string>
+    <string name="change_order">Change order</string>
     <string name="close">Close</string>
+    <string name="capital">Capital: %s</string>
+    <string name="population">Population: %d</string>
+    <string name="base_search_url">https://www.google.com/search?q=</string>
 
 </resources>

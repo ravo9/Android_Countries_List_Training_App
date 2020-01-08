@@ -1,35 +1,26 @@
 package development.dreamcatcher.countrieslistapp.data.network
 
-import android.annotation.SuppressLint
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import io.reactivex.subjects.SingleSubject
+import retrofit2.Call
 import javax.inject.Inject
 
 // Interactor used for communication between data country and external API
 class CountriesNetworkInteractor @Inject constructor(var apiClient: ApiClient) {
 
-    val networkError: MutableLiveData<Boolean> = MutableLiveData()
+    private val networkError: MutableLiveData<Boolean> = MutableLiveData()
 
-    @SuppressLint("CheckResult")
-    fun getAllCountries(): Observable<Result<List<CountryGsonObject>>> {
-        val allCountriesSubject = SingleSubject.create<Result<List<CountryGsonObject>>>()
+    fun getAllCountries(): Call<List<CountryGsonObject>> {
+        return apiClient.getCountries()
+    }
 
-        apiClient.getCountries()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                {
-                    allCountriesSubject.onSuccess(Result.success(it))
-                },
-                {
-                    networkError.postValue(true)
-                    Log.e("getCountries error: ", it.message)
-                })
+    fun getNetworkError(): LiveData<Boolean>? {
+        return networkError
+    }
 
-        return allCountriesSubject.toObservable()
+    fun setNetworkError(t: Throwable?) {
+        networkError.postValue(true)
+        if (t != null) { Log.e("Network Error: ", t.message) }
     }
 }

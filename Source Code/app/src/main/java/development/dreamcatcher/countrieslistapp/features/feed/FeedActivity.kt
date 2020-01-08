@@ -59,7 +59,7 @@ class FeedActivity : AppCompatActivity() {
     }
 
     private fun subscribeForCountries() {
-        viewModel.getAllCountries()?.observe(this, Observer<List<CountryDatabaseEntity>> {
+        viewModel.getAllCountries(true)?.observe(this, Observer<List<CountryDatabaseEntity>> {
 
             if (!it.isNullOrEmpty()) {
                 setViewState(STATE_CONTENT_LOADED)
@@ -86,7 +86,7 @@ class FeedActivity : AppCompatActivity() {
     }
 
     private fun refreshCountriesSubscription() {
-        viewModel.getAllCountries()?.removeObservers(this)
+        viewModel.getAllCountries(true)?.removeObservers(this)
         subscribeForCountries()
     }
 
@@ -135,5 +135,14 @@ class FeedActivity : AppCompatActivity() {
         btn_refresh.setOnClickListener{
             refreshCountriesSubscription()
         }
+
+        // Setup sort button
+        btn_sort.setOnClickListener{
+            changeSortingOrder()
+        }
+    }
+
+    private fun changeSortingOrder() {
+        countriesListAdapter.changeSortingOrder()
     }
 }

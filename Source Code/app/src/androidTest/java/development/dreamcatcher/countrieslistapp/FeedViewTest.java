@@ -24,8 +24,8 @@ public class FeedViewTest {
     @Test
     public void clickOnListedItem_opensDetailedView() throws Exception {
 
-        // Click on the first repository.
-        onView(withId(R.id.recyclerView_main_feed))
+        // Click on the first item.
+        onView(withId(R.id.main_feed_recyclerview))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
 
         // Verify if detailed view has been displayed.
@@ -35,8 +35,8 @@ public class FeedViewTest {
     @Test
     public void clickOnCrossButton_closesDetailedView() throws Exception {
 
-        // Click on the first repository.
-        onView(withId(R.id.recyclerView_main_feed))
+        // Click on the first item.
+        onView(withId(R.id.main_feed_recyclerview))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
 
         // Click on the Cross button.

@@ -10,8 +10,8 @@ import javax.inject.Inject
 class FeedViewModel @Inject constructor(private val countriesRepository: CountriesRepository)
     : ViewModel(), LifecycleObserver {
 
-    fun getAllCountries(): LiveData<List<CountryDatabaseEntity>>? {
-        return countriesRepository.getAllCountries(true)
+    fun getAllCountries(backendUpdateRequired: Boolean): LiveData<List<CountryDatabaseEntity>>? {
+        return countriesRepository.getAllCountries(backendUpdateRequired)
     }
 
     fun getNetworkError(): LiveData<Boolean>? {

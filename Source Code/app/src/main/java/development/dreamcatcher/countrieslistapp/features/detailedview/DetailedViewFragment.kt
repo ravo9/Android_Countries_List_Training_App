@@ -55,7 +55,8 @@ class DetailedViewFragment : Fragment() {
         val countryName = this.arguments?.getString("countryName")
         if (!countryName.isNullOrEmpty()) {
             viewModel.getSingleSavedCountryByName(countryName)?.observe(this, Observer<CountryDatabaseEntity> {
-                //setupWebView(it.htmlUrl)
+                val searchUrl = getString(R.string.base_search_url) + it.name
+                setupWebView(searchUrl)
             })
         }
     }

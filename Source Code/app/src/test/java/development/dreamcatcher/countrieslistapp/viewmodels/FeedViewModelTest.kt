@@ -2,6 +2,8 @@ package development.dreamcatcher.countrieslistapp.viewmodels
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
+import development.dreamcatcher.countrieslistapp.data.database.CountryDatabaseEntity
+import development.dreamcatcher.countrieslistapp.data.repositories.CountriesRepository
 import development.dreamcatcher.countrieslistapp.features.feed.FeedViewModel
 import org.junit.Assert
 import org.junit.Before
@@ -16,11 +18,11 @@ import org.mockito.MockitoAnnotations
 class FeedViewModelTest {
 
     private var viewModel: FeedViewModel? = null
-    private var fakeRepositoryDatabaseEntity: RepositoryDatabaseEntity? = null
-    private var fakeRepositoryEntitiesList = ArrayList<RepositoryDatabaseEntity>()
+    private var fakeCountryDatabaseEntity: CountryDatabaseEntity? = null
+    private var fakeCountryEntitiesList = ArrayList<CountryDatabaseEntity>()
 
     @Mock
-    private val repositoriesRepository: RepositoriesRepository? = null
+    private val countriesRepository: CountriesRepository? = null
 
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
@@ -31,41 +33,35 @@ class FeedViewModelTest {
         // Inject Mocks
         MockitoAnnotations.initMocks(this)
 
-        // Initialize the repository
-        viewModel = FeedViewModel(repositoriesRepository!!)
+        // Initialize the country
+        viewModel = FeedViewModel(countriesRepository!!)
 
         // Prepare fake data
-        val id = "31231"
-        val name = "Fake Repository Name"
-        val description = "Fake description..."
-        val htmlUrl = "http://google.com"
+        val name = "fake/country/name"
+        val capital = "fake/country/capital"
+        val population = 43234234
 
-        // Prepare fake sub-objects
-        val login = "John Owner"
-        val avatarUrl = "http://google.com/picture.jpg"
-        val owner = RepositoryGsonObject.Owner(login, avatarUrl)
+        // Prepare fake Country Entity (DB object)
+        fakeCountryDatabaseEntity = CountryDatabaseEntity(name, capital, population, null)
 
-        // Prepare fake Repository Entity (DB object)
-        fakeRepositoryDatabaseEntity = RepositoryDatabaseEntity(id, name, description, owner.login!!, owner.avatarUrl, htmlUrl)
-
-        // Prepare fake Repositories Entities List
-        fakeRepositoryEntitiesList.add(fakeRepositoryDatabaseEntity!!)
+        // Prepare fake Countries Entities List
+        fakeCountryEntitiesList.add(fakeCountryDatabaseEntity!!)
     }
 
     @Test
-    fun fetchAllRepositoriesByFeedViewModel() {
+    fun fetchAllCountriesByFeedViewModel() {
 
         // Prepare LiveData structure
-        val repositoryEntityLiveData = MutableLiveData<List<RepositoryDatabaseEntity>>()
-        repositoryEntityLiveData.setValue(fakeRepositoryEntitiesList);
+        val countryEntityLiveData = MutableLiveData<List<CountryDatabaseEntity>>()
+        countryEntityLiveData.setValue(fakeCountryEntitiesList)
 
         // Set testing conditions
-        Mockito.`when`(repositoriesRepository?.getAllRepositories(false)).thenReturn(repositoryEntityLiveData)
+        Mockito.`when`(countriesRepository?.getAllCountries(false)).thenReturn(countryEntityLiveData)
 
         // Perform the action
-        val storedRepositories = viewModel?.getAllRepositories()
+        val storedCountries = viewModel?.getAllCountries(false)
 
         // Check results
-        Assert.assertSame(repositoryEntityLiveData, storedRepositories);
+        Assert.assertSame(countryEntityLiveData, storedCountries);
     }
 }
