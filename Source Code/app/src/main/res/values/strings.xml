@@ -10,6 +10,7 @@
     <string name="close">Close</string>
     <string name="capital">Capital: %s</string>
     <string name="population">Population: %d</string>
+    <string name="latitude_longitude">Latitude/ longitude: %s</string>
     <string name="base_search_url">https://www.google.com/search?q=</string>
 
 </resources>

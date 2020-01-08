@@ -8,6 +8,5 @@ data class CountryDatabaseEntity(
         @PrimaryKey val name: String,
         val capital: String?,
         val population: Int?,
-        /*val latlng: Pair<Float, Float>?,*/
-        val flag: String?)
+        val latlng: List<Float>?)
 

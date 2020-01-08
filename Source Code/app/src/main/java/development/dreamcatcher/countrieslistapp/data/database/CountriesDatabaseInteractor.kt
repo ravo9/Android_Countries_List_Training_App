@@ -18,8 +18,7 @@ class CountriesDatabaseInteractor(private val countriesDatabase: CountriesDataba
                     name = it.name,
                     capital = it.capital,
                     population = it.population,
-                    //latlng = it.latlng,
-                    flag = it.flag)
+                    latlng = it.latlng)
                 launch {
                     countriesDatabase.getCountriesDao().insertNewCountry(countryEntity)
                 }

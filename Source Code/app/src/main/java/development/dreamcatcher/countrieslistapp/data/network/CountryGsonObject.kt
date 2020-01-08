@@ -13,9 +13,6 @@ data class CountryGsonObject(
     @SerializedName("population")
     val population: Int?,
 
-    /*@SerializedName("latlng")
-    val latlng: Pair<Float, Float>?,*/
-
-    @SerializedName("flag")
-    val flag: String?
+    @SerializedName("latlng")
+    val latlng: List<Float>?
 )

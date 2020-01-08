@@ -56,6 +56,11 @@ class FeedActivity : AppCompatActivity() {
                 countryName: String -> displayDetailedView(countryName)
         })
         main_feed_recyclerview.adapter = countriesListAdapter
+
+        main_feed_recyclerview.setHasFixedSize(true);
+        main_feed_recyclerview.setItemViewCacheSize(20);
+        main_feed_recyclerview.setDrawingCacheEnabled(true);
+        main_feed_recyclerview.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
     }
 
     private fun subscribeForCountries() {

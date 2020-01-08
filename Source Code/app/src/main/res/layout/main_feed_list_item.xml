@@ -15,71 +15,43 @@
         android:elevation="@dimen/list_item_elevation"
         android:clipToPadding="false">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="@dimen/list_item_thumbnail_length"
-            android:layout_height="@dimen/list_item_thumbnail_length"
-            android:id="@+id/avatar_container"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imageView_thumbnail"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <TextView
             android:id="@+id/textView_name"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textSize="@dimen/list_item_text_size_main"
-            android:layout_marginStart="@dimen/list_item_internal_spacing"
+            android:textSize="@dimen/list_item_text_size_big"
             android:layout_marginTop="@dimen/list_item_internal_spacing"
-            app:layout_constraintStart_toEndOf="@id/avatar_container"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/textView_capital"/>
 
     <TextView
             android:id="@+id/textView_capital"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textSize="@dimen/list_item_text_size_main"
-            android:layout_marginStart="@dimen/list_item_internal_spacing"
             android:layout_marginTop="@dimen/list_item_internal_spacing"
-            app:layout_constraintStart_toEndOf="@id/avatar_container"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_name"
             app:layout_constraintBottom_toTopOf="@id/textView_population"/>
 
     <TextView
             android:id="@+id/textView_population"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textSize="@dimen/list_item_text_size_main"
-            android:layout_marginStart="@dimen/list_item_internal_spacing"
             android:layout_marginTop="@dimen/list_item_internal_spacing"
-            app:layout_constraintStart_toEndOf="@id/avatar_container"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_capital"
             app:layout_constraintBottom_toTopOf="@id/textView_latlng"/>
 
     <TextView
             android:id="@+id/textView_latlng"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="viewEnd"
+            android:textAlignment="center"
             android:textSize="@dimen/list_item_text_size_main"
-            android:layout_marginStart="@dimen/list_item_internal_spacing"
             android:layout_marginTop="@dimen/list_item_internal_spacing"
-            app:layout_constraintStart_toEndOf="@id/avatar_container"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_population"
             app:layout_constraintBottom_toBottomOf="parent"/>
 

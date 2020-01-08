@@ -38,22 +38,15 @@ class CountriesListAdapter (val activity: Activity, val clickListener: (String) 
 
         // Prepare fetched data
         val name = countriesList[position].name
-        val flag = countriesList[position].flag
         val capital = countriesList[position].capital
         val population = countriesList[position].population
+        val latlng = countriesList[position].latlng
 
         // Set data within the holder
         holder.name.text = name
         holder.capital.text = (holder.itemView.context).getString(R.string.capital, capital)
         holder.population.text = (holder.itemView.context).getString(R.string.population, population)
-
-        // Load thumbnail
-        if (flag != null) {
-            /*Glide.with(returnActivity())
-                .load(getMyImageGrabberInstance())
-                .into(imageView);*/
-            //GlideToVectorYou.justLoadImage(activity, Uri.parse(flag), holder.thumbnail)
-        }
+        holder.latlng.text = (holder.itemView.context).getString(R.string.latitude_longitude, latlng.toString())
 
         // Set onClickListener
         holder.rowContainer.setOnClickListener{
@@ -68,6 +61,5 @@ class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
     val capital = view.textView_capital
     val population = view.textView_population
     val latlng = view.textView_latlng
-    val thumbnail = view.imageView_thumbnail
     val rowContainer = view.row_container
 }

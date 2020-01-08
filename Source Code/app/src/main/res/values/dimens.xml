@@ -18,7 +18,8 @@
     <dimen name="list_item_internal_spacing">20dp</dimen>
     <dimen name="list_item_elevation">2dp</dimen>
     <dimen name="list_item_thumbnail_length">100dp</dimen>
-    <dimen name="list_item_text_size_main">12sp</dimen>
+    <dimen name="list_item_text_size_big">16sp</dimen>
+    <dimen name="list_item_text_size_main">13sp</dimen>
 
     <dimen name="feed_view_padding_vertical">15dp</dimen>
 
